@@ -1,6 +1,7 @@
 package com.jiuan.app.materialdemo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
@@ -23,7 +24,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     @Bind(R.id.drawer_layout)
     public DrawerLayout mDrawerLayout;
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initView(){
         setSupportActionBar(mToolbar);
+        mNavigationView.setNavigationItemSelectedListener(this);
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.drawer_open,
                 R.string.drawer_close);
         mDrawerToggle.syncState();
@@ -95,6 +97,24 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+
+            case R.id.navigation_item_book:
+                Intent intent = new Intent(MainActivity.this, ComponentActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.navigation_item_example:
+              Intent myintent = new Intent(MainActivity.this,ExampleActivity.class);
+                startActivity(myintent);
+                break;
+        }
+        menuItem.setChecked(true);
+        mDrawerLayout.closeDrawers();
+        return true;
     }
 
     public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
