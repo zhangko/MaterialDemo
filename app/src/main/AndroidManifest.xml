@@ -26,6 +26,17 @@
             android:name=".ExampleActivity">
 
         </activity>
+
+        <activity
+            android:name=".BlogActivity"
+            android:theme="@style/DrawerLayoutTheme">
+
+        </activity>
+
+        <activity
+            android:name=".AboutActivity">
+
+        </activity>
     </application>
 
 </manifest>

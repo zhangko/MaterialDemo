@@ -111,6 +111,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
               Intent myintent = new Intent(MainActivity.this,ExampleActivity.class);
                 startActivity(myintent);
                 break;
+
+            case R.id.navigation_item_blog:
+                Intent blogIntent = new Intent(MainActivity.this,BlogActivity.class);
+                startActivity(blogIntent);
+                break;
+            case R.id.navigation_item_about:
+                Intent aboutIntent = new Intent(MainActivity.this,AboutActivity.class);
+                startActivity(aboutIntent);
+                break;
         }
         menuItem.setChecked(true);
         mDrawerLayout.closeDrawers();
